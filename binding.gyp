@@ -18,11 +18,12 @@
       'cflags_cc!': [ '-fno-exceptions', '-fno-rtti' ],
       'conditions': [
         ['OS=="win"', {
-          # no Windows support yet...
-        }, {
-          'libraries': [
-            '<!@(geos-config --libs)'
+          'defines': [
+            'round=floor'
           ],
+          'libraries': [
+            "-Lgeos"
+          ]
         }],
         ['OS=="mac"', {
           'xcode_settings': {
@@ -33,10 +34,11 @@
               '<!@(geos-config --cflags)'
             ]
           }
-        }, {
+        }],
+        ['OS=="linux"', {
           'cflags': [
             '<!@(geos-config --cflags)'
-          ],
+          ]
         }]
       ]
     }
