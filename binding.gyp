@@ -22,8 +22,13 @@
             'round=floor'
           ],
           'libraries': [
-            "-Lgeos"
-          ]
+            "E:\\geos.lib"
+          ],
+          'msvs_settings': {
+            'VCLinkerTool': {
+              'TargetMachine': 1
+            }
+          }
         }],
         ['OS=="mac"', {
           'xcode_settings': {
