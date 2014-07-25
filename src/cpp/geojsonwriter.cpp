@@ -182,7 +182,7 @@ void GeoJSONWriter::setRoundingPrecision(int places) {
         places = -1;
     }
     decimalPlaces = places;
-    factor = pow(10, decimalPlaces);
+    factor = pow((double) 10, decimalPlaces);
 }
 
 void GeoJSONWriter::setBbox(bool _bbox) {

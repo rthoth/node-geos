@@ -12,7 +12,7 @@ spawn = (command, options) ->
   program #return program
 
 buildBinary = ->
-  spawn nodeGyp, ["rebuild"]
+  spawn nodeGyp, ["configure"]
 
 build = (src, dst, watch) ->
   options = ["-c", "-o", dst, src]

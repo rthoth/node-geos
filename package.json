@@ -36,12 +36,13 @@
   }
 , "scripts":
   {
-    "install" : "./node_modules/coffee-script/bin/cake install"
+    "install" : "cake install"
   , "test": "vows --spec"
   }
 , "main": "./lib"
 , "dependencies":
   {
+    "cake": "*",
     "coffee-script": "*",
     "node-gyp": ">=0.12.1"
   }

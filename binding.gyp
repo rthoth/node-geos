@@ -22,11 +22,15 @@
             'round=floor'
           ],
           'libraries': [
-            "<@(DEPTH)/../geos.lib"
+            "geos.lib"
           ],
-          'msvs_settings': {
-            'VCCLCompilerTool': {
-              'RuntimeLibrary': 'kkez'
+          'configurations': {
+            'Release': {
+              'msvs_settings': {
+                'VCCLCompilerTool': {
+                  'RuntimeLibrary': 2
+                }
+              }
             }
           }
         }, {
