@@ -126,9 +126,13 @@
 #define NODE_GEOS_UNARY_TOPOLOGIC_FUNCTION(cppmethod, geosmethod)               \
     Handle<Value> Geometry::cppmethod(const Arguments& args) {                  \
         HandleScope scope;                                                      \
-        Geometry *geom = ObjectWrap::Unwrap<Geometry>(args.This());             \
-        geos::geom::Geometry* result = geom->_geom->geosmethod();               \
-        return scope.Close(Geometry::New(result));                              \
+        Geometry *geom = ObjectWrap::Unwrap<Geometry>(args.This());                 \
+        try {                                                                       \
+            geos::geom::Geometry* result = geom->_geom->geosmethod();               \
+            return scope.Close(Geometry::New(result));                              \
+        } catch (geos::util::GEOSException exception) {                             \
+            return ThrowException(Exception::Error(String::New(exception.what())));  \
+        }                                                                           \
     }                                                                           \
 
 #define NODE_GEOS_BINARY_TOPOLOGIC_FUNCTION(cppmethod, geosmethod)              \
@@ -136,8 +140,12 @@
         HandleScope scope;                                                      \
         Geometry *geom = ObjectWrap::Unwrap<Geometry>(args.This());             \
         Geometry *geom2 = ObjectWrap::Unwrap<Geometry>(args[0]->ToObject());    \
-        geos::geom::Geometry* result = geom->_geom->geosmethod(geom2->_geom);   \
-        return scope.Close(Geometry::New(result));                              \
+        try {                                                                       \
+            geos::geom::Geometry* result = geom->_geom->geosmethod(geom2->_geom);   \
+            return scope.Close(Geometry::New(result));                              \
+        } catch (geos::util::GEOSException exception) {                             \
+            return ThrowException(Exception::Error(String::New(exception.what()))); \
+        }                                                                           \
     }                                                                           \
 
 #define NODE_GEOS_DOUBLE_GETTER(cppmethod, geosmethod)                          \

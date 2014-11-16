@@ -33,10 +33,6 @@
               }
             }
           }
-        }, {
-          'cflags': [
-            '<!@(geos-config --cflags)'
-          ]
         }],
         ['OS=="mac"', {
           'xcode_settings': {
@@ -47,6 +43,14 @@
               '<!@(geos-config --cflags)'
             ]
           }
+        }],
+        ['OS=="linux"', {
+          'cflags': [
+            '<!@(geos-config --cflags)'
+          ],
+          'libraries': [
+            '<!@(geos-config --libs)'
+          ]
         }]
       ]
     }
