@@ -18,8 +18,8 @@
       'cflags_cc!': [ '-fno-exceptions', '-fno-rtti' ],
       'conditions': [
         ['OS=="win"', {
-          'defines': [
-            'round=floor'
+          "defines": [
+            "round=floor"
           ],
           'libraries': [
             "geos.lib"
