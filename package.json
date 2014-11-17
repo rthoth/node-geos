@@ -29,10 +29,10 @@
   }]
 , "repository":
   { "type": "git"
-  , "url": "https://github.com/kashif/node-geos.git"
+  , "url": "https://github.com/rthoth/node-geos.git"
   }
 , "bugs":
-  { "url": "http://github.com/kashif/node-geos/issues"
+  { "url": "https://github.com/rthoth/node-geos/issues"
   }
 , "scripts":
   {
